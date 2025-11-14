@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://rubygems.org/gems/phlexy_ui"
   s.metadata = {"source_code_uri" => "https://github.com/PhlexyUI/phlexy_ui"}
 
-  s.required_ruby_version = ">= 3.2"
+  s.required_ruby_version = ">= 3.1.4"
 
   s.add_dependency "phlex", ">= 2.0.0.rc1"
   s.add_dependency "zeitwerk", "~> 2.6"
