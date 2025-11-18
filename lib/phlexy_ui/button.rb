@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "phlex/version"
-
 module PhlexyUI
   class Button < Base
     def initialize(*, as: :button, modal: nil, **)
@@ -19,13 +17,7 @@ module PhlexyUI
         options:
       ).then do |classes|
         if modal
-          public_send(
-            as,
-            class: classes,
-            onclick: safe("#{Phlex::Escape.html_escape(modal)}.showModal()"),
-            **options,
-            &
-          )
+          build_button_via_unsafe_raw(classes, &)
         else
           public_send(as, class: classes, **options, &)
         end
@@ -36,19 +28,6 @@ module PhlexyUI
 
     attr_reader :modal
 
-    # TODO: Remove this once Phlex 2.0 is released.
-    #
-    # The cleanest way to do this is with a single:
-    #
-    # onclick: "#{Phlex::Escape.html_escape(modal)}.showModal()"
-    #
-    # However, currently, Phlex does not allow you to use the "onclick"
-    # attribute.
-    #
-    # Once Phlex 2.0 is released, it will add a #safe method
-    # that will allow us to replace this with a single line:
-    #
-    # onclick: safe("#{Phlex::Escape.html_escape(modal)}.showModal()")
     def build_button_via_unsafe_raw(classes, &)
       classes = Phlex::Escape.html_escape(classes.join(" "))
       @options = options

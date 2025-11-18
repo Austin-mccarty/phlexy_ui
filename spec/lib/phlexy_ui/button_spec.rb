@@ -171,9 +171,9 @@ describe PhlexyUI::Button do
         it "renders it separately with a responsive prefix" do
           expected_html = html <<~HTML
             <button class="
-              foo-btn 
-              foo-btn-neutral 
-              #{viewport}:foo-btn-primary 
+              foo-btn
+              foo-btn-neutral
+              #{viewport}:foo-btn-primary
               #{viewport}:foo-btn-active">
             </button>
           HTML
@@ -224,10 +224,10 @@ describe PhlexyUI::Button do
 
     it "renders it correctly" do
       expected_html = html <<~HTML
-        <button 
-          class="btn btn-neutral my-class" 
-          onclick="my_modal_1.showModal()"
-          data-my="modals">Click me</button>
+        <button
+          class="btn btn-neutral my-class"
+          data-my="modals"
+          onclick="my_modal_1.showModal()">Click me</button>
       HTML
 
       expect(output).to eq(expected_html)
@@ -254,8 +254,8 @@ describe PhlexyUI::Button do
 
       it "escapes the code" do
         expected_html = html <<~HTML
-          <button 
-            class="btn btn-neutral" 
+          <button
+            class="btn btn-neutral"
             onclick="&quot; onclick=&quot;alert(&#39;XSS&#39;) //;.showModal()">
           </button>
         HTML
